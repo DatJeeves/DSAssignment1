@@ -45,10 +45,10 @@ Reader::Reader() {
 	varience = 0;
 	strLengthMinusMean = 0;
 	stDeviation = 0;
-	amountA = 0;
-	amountT = 0;
-	amountC = 0;
-	amountG = 0;
+	amountA = 0.0;
+	amountT = 0.0;
+	amountC = 0.0;
+	amountG = 0.0;
 
 	outputLineLength = 0;
 	randInt = 0;
@@ -381,16 +381,17 @@ void Reader::output() {
 	output << "GG: " << probGG << "%" << "\r\n";
 
 	//finds amount for nucleotides
-	amountA = (int)(outputLineLength * (nucA / totalChar));
-	amountT = (int)(outputLineLength * (nucT / totalChar));
-	amountG = (int)(outputLineLength * (nucG / totalChar));
-	amountC = (int)(outputLineLength * (nucC / totalChar));
-
+	amountA = (outputLineLength * (nucA / totalChar));
+	amountT = (outputLineLength * (nucT / totalChar));
+	amountG = (outputLineLength * (nucG / totalChar));
+	amountC = (outputLineLength * (nucC / totalChar));
+	std::cout << amountA << std::endl;
+	
 	//created to be outside of for loop
 	outputLineLength = distribution();
 	//1000 elements in the created stand
 	for (int i; i < 1000; ++i) {
-		
+		//while distribution created is 0, goes until we get one we should use
 		while (outputLineLength <= 0) {
 			outputLineLength = distribution();
 		}
@@ -398,6 +399,7 @@ void Reader::output() {
 		if(amountA > 0 || amountT > 0 || amountC > 0 || amountG > 0) {
 			//randomly creates nums so that the dna strand is not just AAAAGGGTTTCCC ect.
 			//obtained from https://stackoverflow.com/questions/12580820/random-number-between-1-to-10-using-c
+			//random nums 0-3 used to print nucleotides
 			randInt = rand() % 4;
 			while (randInt = 0) {
 				randInt = rand() % 4;
@@ -479,10 +481,10 @@ void Reader::reset() {
 	strLengthMinusMean = 0;
 	stDeviation = 0;
 	//Output String Vars
-	amountA = 0;
-	amountT = 0;
-	amountC = 0;
-	amountG = 0;
+	amountA = 0.0;
+	amountT = 0.0;
+	amountC = 0.0;
+	amountG = 0.0;
 
 	outputLineLength = 0;
 	randInt = 0;
