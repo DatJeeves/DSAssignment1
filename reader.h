@@ -80,10 +80,10 @@ class Reader {
 		double strLengthMinusMean;
 		double stDeviation;
 		//Output String Vars
-		double amountA;
-		double amountT;
-		double amountC;
-		double amountG;
+		int amountA;
+		int amountT;
+		int amountC;
+		int amountG;
 
 		int outputLineLength;
 		int randInt;
