@@ -386,9 +386,7 @@ void Reader::output() {
 	amountT = (int)(outputLineLength * (nucT / totalChar));
 	amountG = (int)(outputLineLength * (nucG / totalChar));
 	amountC = (int)(outputLineLength * (nucC / totalChar));
-	std::cout << distribution() << std::endl;
-	std::cout << outputLineLength << std::endl;
-	//created to be outside of for loop
+
 	
 	//1000 elements in the created stand
 	for (int i; i < 1000; ++i) {
@@ -397,6 +395,7 @@ void Reader::output() {
 			outputLineLength = distribution();
 		}
 		//**used to print nucleotides in dna strand however it is for some reason not printng, I have been stuck here for a while and can't find a solution :(
+		//For some reason outputLineLength is 0 even through dirstribution is not 0 *****
 		if(amountA > 0 || amountT > 0 || amountC > 0 || amountG > 0) {
 			//randomly creates nums so that the dna strand is not just AAAAGGGTTTCCC ect.
 			//obtained from https://stackoverflow.com/questions/12580820/random-number-between-1-to-10-using-c
